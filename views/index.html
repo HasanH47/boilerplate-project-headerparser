@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Request Header Parser</title>
+    <link
+      rel="shortcut icon"
+      href="https://cdn.hyperdev.com/us-east-1%3A52a203ff-088b-420f-81be-45bf559d01b1%2Ffavicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Request Header Parser Microservice</h1>
+
+      <h2>Example Usage:</h2>
+      <button id="apiButton">Get API Data</button>
+
+      <h2>Example Output:</h2>
+      <p id="apiOutput"></p>
+    </div>
+    <div class="footer">
+      <p>by <a href="https://www.freecodecamp.org">freeCodeCamp</a></p>
+    </div>
+
+    <script>
+      document
+        .getElementById("apiButton")
+        .addEventListener("click", function () {
+          // Gunakan Fetch API untuk melakukan permintaan ke API
+          fetch("/api/whoami")
+            .then((response) => response.json())
+            .then((data) => {
+              // Tampilkan hasil API pada elemen dengan id 'apiOutput'
+              document.getElementById("apiOutput").textContent = JSON.stringify(
+                data,
+                null,
+                2
+              );
+            })
+            .catch((error) => {
+              console.error("Error fetching data:", error);
+            });
+        });
+    </script>
+  </body>
+</html>
